@@ -20,6 +20,8 @@ class HTMLRenderer(html_renderer.HTMLRenderer):
         show_front_matter=True,
         use_pygments=False,
         as_standalone=False,
+        myst_css=None,
+        pygments_css=None,
     ):
         """This HTML render uses the same block/span tokens as the docutils renderer.
 
@@ -27,9 +29,12 @@ class HTMLRenderer(html_renderer.HTMLRenderer):
         """
         self.show_comments = show_comments
         self.show_front_matter = show_front_matter
+        self.myst_css = myst_css
         self.use_pygments = use_pygments
+        self.pygments_css = pygments_css
         self.add_mathjax = add_mathjax
         self.as_standalone = as_standalone
+
         self._suppress_ptag_stack = [False]
 
         _span_tokens = self._tokens_from_module(myst_span_tokens)
@@ -63,9 +68,11 @@ class HTMLRenderer(html_renderer.HTMLRenderer):
             )
         if not self.as_standalone:
             return body
-        css = get_syntax_css()
+        css = get_syntax_css() if self.myst_css is None else self.myst_css
         if self.use_pygments:
-            css += pygments_css()
+            css += (
+                get_pygments_css() if self.pygments_css is None else self.pygments_css
+            )
         return minimal_html_page(body, css=css)
 
     def render_block_code(self, token):
@@ -168,7 +175,7 @@ def pygments_highlight(code: str, language: str):
         return None
 
 
-def pygments_css():
+def get_pygments_css():
     from pygments.formatters import HtmlFormatter
 
     return HtmlFormatter().get_style_defs(".highlight")

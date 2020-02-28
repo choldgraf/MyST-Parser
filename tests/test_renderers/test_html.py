@@ -113,6 +113,19 @@ def test_minimal_html_page(file_regression):
 
         """
     )
+    pygments_css = dedent(
+        """\
+        .highlight  { background: #f8f8f8; }
+        .highlight .k { color: #008000; font-weight: bold } /* Keyword */
+        .highlight .nf { color: #0000FF } /* Name.Function */
+        .highlight .nb { color: #008000 } /* Name.Builtin */
+        .highlight .o { color: #666666 } /* Operator */
+        .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+        .highlight .si { color: #BB6688; font-weight: bold } /* Literal.String */
+        .highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+        """
+    )
+
     out_string = parse_text(
         in_string,
         "html",
@@ -121,5 +134,6 @@ def test_minimal_html_page(file_regression):
         show_front_matter=True,
         use_pygments=True,
         as_standalone=True,
+        pygments_css=pygments_css,
     )
     file_regression.check(out_string, extension=".html")
