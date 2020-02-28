@@ -15,6 +15,9 @@ with open(os.path.join(os.path.dirname(__file__), "commonmark.json"), "r") as fi
 
 @pytest.mark.parametrize("entry", tests)
 def test_commonmark(entry):
+    if entry["markdown"] == "+++\n" and entry["html"] == "<p>+++</p>\n":
+        # This is just a test that +++ are not thematic breaks
+        pytest.skip("Expects '+++' to be unconverted (not block break).")
     if entry["example"] in [65, 67]:
         # This is supported by numerous Markdown flavours, but not strictly CommonMark
         # see: https://talk.commonmark.org/t/metadata-in-documents/721/86

@@ -1,0 +1,27 @@
+div.myst-front-matter {
+    border: 1px solid gray;
+}
+div.myst-block-comment p {
+    color: gray;
+}
+hr.myst-block-break {
+    border-top:1px dotted black;
+}
+a.myst-target {
+}
+div.myst-directive {
+    background: #f8f8f8;
+}
+span.myst-dir-name {
+    color: green;
+}
+span.myst-dir-args {
+}
+span.myst-dir-content {
+}
+span.myst-role-name {
+    color: green;
+}
+span.myst-role-content {
+    color: black;
+}
