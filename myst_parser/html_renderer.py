@@ -96,6 +96,12 @@ class HTMLRenderer(html_renderer.HTMLRenderer):
         return self.render_block_code(token)
 
     def render_directive(self, token):
+        # TODO use drop-down?
+        # <details open>
+        # <summary>{name} args</summary>
+        # options
+        # content
+        # </details>
         return (
             '<div class="myst-directive">'
             "{t}{t}{t}"
