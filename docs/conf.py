@@ -58,7 +58,6 @@ html_title = ""
 html_theme_options = {
     "github_url": "https://github.com/executablebooks/MyST-Parser",
     "repository_url": "https://github.com/executablebooks/MyST-Parser",
-    "expand_sections": ["examples/index"],
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -74,7 +73,7 @@ myst_deflist_enable = True
 myst_figure_enable = True
 myst_url_schemes = ("http", "https", "mailto")
 myst_heading_anchors = 2
-panels_add_boostrap_css = False
+panels_add_bootstrap_css = False
 
 
 def run_apidoc(app):

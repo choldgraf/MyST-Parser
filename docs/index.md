@@ -5,6 +5,12 @@
 
 **A fully-functional markdown flavor and parser for Sphinx.**
 
+```{epigraph}
+Hi there
+
+-- me
+```
+
 MyST allows you to write Sphinx documentation entirely in markdown.
 MyST markdown provides a markdown equivalent of the reStructuredText syntax,
 meaning that you can do anything in MyST that you can do with reStructuredText.
